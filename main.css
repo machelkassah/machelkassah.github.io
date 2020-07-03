@@ -102,21 +102,41 @@ border-right: 1px solid var(--primary-border-color);
 
 section{
     background-image: var(--secondary-gradient);
+    /* padding: 80px; */
+    text-align: center;
+}
+
+.skill-section-title h1{
+    font-size: 2.5rem ;
+    font-weight: 400;
+    padding-top: 20px;
+    padding-left: 100px;
+    text-align: left;
+    color: var(--primary-font-color);
+    /* border-bottom: 1px solid var(--primary-border-color); */
+
+}
+
+.skill-section{
+    /* margin: 10px; */
     display: grid;
-    padding: 80px;
     grid-template-columns: 1fr 1fr 1fr;
     text-align: center;
 }
 
-.skill-section{
-    margin: 10px;
+.skill-section-card{
+    padding: 10px 30px;
 }
 .skill-image{
     font-size: 8rem;
+    /* background-color: var(--primary-color); */
+    /* width: 100px; */
+
 }
 
 .skill-image i{
     color: var(--secondary-font-color);
+    /* background-color: var(--primary-color); */
 
 }
 
@@ -127,4 +147,13 @@ section{
 .skill-rating i{
     font-size: 2rem;
     color: var(--secondary-font-color);
+}
+
+footer{
+    /* border: none; */
+    border-top: 1px solid var(--primary-border-color);
+    /* border-radius: 1px; */
+    padding: 10px;
+    background-image:var(--secondary-gradient);
+    text-align: right;
 }
