@@ -1,0 +1,128 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+nav{
+    text-align: right;
+    padding: 20px;
+}
+
+a{
+    text-decoration: none;
+}
+
+nav a{
+    padding: 5px;
+}
+nav a:hover{
+    text-decoration: underline;
+}
+
+nav a>i{
+    font-size: 1.4rem !important;
+    font-weight: 100;
+}
+
+nav .avatar{
+    color: blue;
+    font-size: 2.5rem !important;
+}
+
+section{
+    text-align: center;
+    padding: 50px;
+    display: grid;
+}
+
+section .logo{
+    padding: 20px auto 10px;
+}
+
+section .search-bar{
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid rgb(226, 222, 222);
+    border-radius: 50px;
+    display: inline;
+    color: rgb(196, 194, 194)
+}
+
+.search-bar input{
+    width: 400px;
+    height: 10px;
+    border: none;
+}
+
+.search-bar:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.315);
+}
+
+.search-options{
+   padding: 20px;
+}
+
+.search-options a{
+    margin: 20px;
+    background-color: rgba(241, 238, 238, 0.849);
+    color: rgb(114, 112, 112);
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.search-options a:hover{
+    background-color: rgb(226, 223, 223);
+    border: 1px solid rgb(155, 153, 153);
+    color: black;
+
+}
+
+.search-langs{
+    padding: 10px;
+}
+
+.search-langs a{
+    padding: 5px;
+    font-size: 0.8rem;
+}
+
+.search-langs a:hover{
+    text-decoration: underline;
+}
+
+footer{
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+    background-color: rgba(240, 236, 236, 0.849) ;
+    color:rgb(100, 98, 98) ;
+    
+}
+.footer-country{
+  padding: 10px;
+  border-top: 1px solid rgb(182, 180, 180); 
+  border-bottom: 1px solid rgb(182, 180, 180); 
+}
+
+.footer-links{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.footer-links-left a{
+    color:rgb(100, 98, 98) ;
+    padding-right: 20px;
+}
+.footer-links-right a{
+    color:rgb(100, 98, 98) ;
+    padding-right: 20px;
+}
