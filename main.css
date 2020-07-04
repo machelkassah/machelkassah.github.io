@@ -225,6 +225,7 @@ footer{
     }
     .nav-bar-menu i{
         font-size: 1.6rem;
+        padding-right: 10px;
     }
     .nav-bar-menu :nth-child(1){
         display: initial;
