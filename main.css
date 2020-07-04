@@ -18,6 +18,7 @@
     font-size: 12px;
     color:var(--primary-font-color);
     box-sizing: border-box;
+    /* width: 100vw; */
 }
 
 body{
@@ -25,6 +26,7 @@ body{
     display: grid;
     grid-template-rows: 0.35fr 1.65fr;
     overflow: hidden;
+    width: 100vw;
 }
 
 header{
@@ -100,6 +102,11 @@ border-right: 1px solid var(--primary-border-color);
     /* padding-top: 10px; */
 }
 
+
+.nav-bar-menu :nth-child(1){
+    display: none;
+}
+
 section{
     background-image: var(--secondary-gradient);
     /* padding: 80px; */
@@ -157,3 +164,111 @@ footer{
     background-image:var(--secondary-gradient);
     text-align: right;
 }
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    /* Styles */
+    *{
+        margin: 0;
+        padding: 0;
+        /* width: 100vw; */
+        /* height: 100vh; */
+        box-sizing: border-box;
+        overflow: scroll;
+    }
+    body{
+        width: 100vw;
+        /* overflow: initial; */
+    }
+    
+   
+    .nav-bar-contact{
+        padding: 0 5px;
+        /* display: flex; */
+        /* justify-content: space-between; */
+        /* border-bottom: 1px solid var(--primary-border-color); */
+    }
+  
+    .nav-bar-tel{
+        padding: 5px 5px;
+        /* border-left: 1px solid var(--primary-border-color); */
+        /* border-right: 1px solid var(--primary-border-color); */
+       
+    }
+    
+    .nav-bar-soc-icons{
+      display: none;
+    }
+    
+    .nav-bar-main{
+        padding: 5px  5px ;
+        display: flex;
+        justify-content: space-between;
+        /* grid-template-columns: 1fr 1fr; */
+        /* font-weight: 500; */
+    
+    }
+      
+    .nav-bar-main a{
+        padding:  5px;
+    }
+    
+    .nav-bar-menu{
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        /* padding-top: 10px; */
+    }
+    
+    .nav-bar-menu :nth-child(1){
+        display: initial;
+    }
+    .nav-bar-menu :nth-child(2), .nav-bar-menu :nth-child(3), .nav-bar-menu :nth-child(4), .nav-bar-menu :nth-child(5){
+        display: none;
+    }
+
+
+    .skill-section-title h1{
+        font-size: 1.5rem ;
+        padding-left: 10px ;
+    }
+
+    .skill-section{
+        margin: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: center;
+        /* width: 100vw; */
+        /* display: none; */
+    }
+
+    
+    .skill-section-card{
+        padding: 10px 30px;
+    }
+    .skill-image{
+        font-size: 5rem;
+        /* background-color: var(--primary-color); */
+        /* width: 100px; */
+
+    }
+
+   
+
+    .skill-name{
+        font-size: 1.5rem;
+    }
+
+    .skill-rating i{
+        font-size: 1rem;
+    }
+
+    footer{
+        
+        background-image:var(--primary-color);
+       
+    }
+
+
+    
+ }
