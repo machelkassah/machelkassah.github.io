@@ -176,9 +176,13 @@ footer{
         box-sizing: border-box;
         overflow: scroll;
     }
+
     body{
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 0.25fr 1.65fr;
+        overflow: hidden;
         width: 100vw;
-        /* overflow: initial; */
     }
     
    
