@@ -5,7 +5,7 @@ Source of truth for all content: `machel-kassah-website-copy.md` (copied into th
 
 ## Purpose
 
-A single-page professional site for Machel Kassah — Operations Technologist & Digital Systems Builder, Accra, Ghana — targeting employers, technology leaders, and business partners evaluating him for operations/technology leadership, software collaboration, or consulting. Must read as credible and senior, differentiated by the combination of operations/compliance experience, hands-on software development, and entrepreneurship. Not a generic developer portfolio.
+A professional site for Machel Kassah — Operations Technologist & Digital Systems Builder, Accra, Ghana — targeting employers, technology leaders, and business partners evaluating him for operations/technology leadership, software collaboration, or consulting. Must read as credible and senior, differentiated by the combination of operations/compliance experience, hands-on software development, and entrepreneurship. Not a generic developer portfolio.
 
 ## Content policy
 
@@ -15,6 +15,7 @@ Resolved ambiguities (confirmed by Machel):
 - **Opsella**: appears in both Projects (full flagship card) and Ventures (its own venture card), as-is in the copy file.
 - **Secondary About photo**: included as a second placeholder slot in the About section.
 - **Build approach**: Astro.
+- **Site structure**: Hybrid — Home stays a single-page scroll; Projects and Ventures each get their own dedicated page with more room per item. See Information Architecture below.
 
 ## Tech stack
 
@@ -24,18 +25,25 @@ Resolved ambiguities (confirmed by Machel):
 
 ## Information architecture
 
-Single page, sticky header with anchor nav, sections in order:
+Hybrid structure: Home is a single scrolling page for the "get the picture in one visit" content; Projects and Ventures — the two sections that benefit most from room to breathe — get their own dedicated pages.
 
-1. Hero (Home)
+**Home (`/`)** — sticky header, anchor nav, sections in order:
+1. Hero
 2. About
-3. Experience
-4. Skills
-5. Projects
-6. Ventures
-7. Leadership & Community (compact, positioned near Ventures/Education, not a heavy standalone section)
+3. Experience (timeline)
+4. Skills (grouped by category — full list; compact enough that a separate page isn't warranted)
+5. Projects preview — Opsella (flagship) plus one more featured project as larger teaser cards, "View all projects →" linking to `/projects`
+6. Ventures preview — all three venture cards at compact size (there are only three, so nothing is hidden here), "View all ventures →" linking to `/ventures`
+7. Leadership & Community (compact, folded in near Education, not a heavy standalone section)
 8. Education & Certifications
 9. Contact
 10. Footer
+
+**Projects (`/projects`)** — full treatment of all five projects as alternating image-left/image-right feature blocks (status, problem/solution where the copy has it, role, stack, image placeholder). Opsella rendered first/largest as the flagship, per the copy file's own note.
+
+**Ventures (`/ventures`)** — the same three ventures (Enthrive, DeleOps, Opsella) with more layout room than the home teaser. The copy file's venture descriptions are intentionally one-liners, so "more room" means larger typographic/visual treatment, not invented detail — no new facts are added beyond what's in the copy file.
+
+**Navigation.** Header nav items: Home, About, Experience, Skills, Projects, Ventures, Contact. About/Experience/Skills/Contact are anchor links to the Home page's sections (`/#about`, etc. — resolving correctly whether the visitor is already on Home or navigating from a sub-page). Projects and Ventures are direct page links (`/projects`, `/ventures`). The current page/section is indicated in the nav (active state). Footer appears on all three pages and repeats the essential contact/social links.
 
 No phone number, no CV/résumé download anywhere — intentionally excluded per the copy file.
 
@@ -44,15 +52,21 @@ No phone number, no CV/résumé download anywhere — intentionally excluded per
 ```
 src/
   pages/
-    index.astro              — assembles all sections
+    index.astro              — Home: assembles all single-page sections
+    projects.astro            — full Projects page (all 5, alternating feature blocks)
+    ventures.astro             — full Ventures page (3 ventures, expanded layout)
+  layouts/
+    BaseLayout.astro          — <head>/SEO/meta, Header, Footer, shared across all pages
   components/
-    Header.astro              — sticky nav, anchor links, logo/name
+    Header.astro              — sticky nav; anchor links for Home sections, page links for Projects/Ventures; active-state aware
     Hero.astro
     About.astro
     Experience.astro          — vertical timeline layout
     Skills.astro              — grouped by category
-    Projects.astro            — asymmetric feature blocks, alternating sides
-    Ventures.astro            — 3-up compact cards (Enthrive, DeleOps, Opsella)
+    ProjectsPreview.astro     — Home teaser: Opsella + 1 featured project, "View all" link
+    ProjectsFull.astro        — full alternating feature-block list, used by pages/projects.astro
+    VenturesPreview.astro     — Home teaser: all 3 compact cards, "View all" link
+    VenturesFull.astro        — expanded 3-venture layout, used by pages/ventures.astro
     LeadershipEducation.astro — compact combined block (Leadership list + Education/Certs)
     Contact.astro             — two labeled emails, LinkedIn, GitHub, location, form
     Footer.astro
@@ -72,7 +86,7 @@ public/
   favicon.svg
 ```
 
-Each `src/data/*.ts` file is a typed array/object transcribed directly from the copy file — this is the single content source Astro components read from, keeping content edits separate from markup.
+Each `src/data/*.ts` file is a typed array/object transcribed directly from the copy file — this is the single content source every page/component reads from (Home's preview components and the dedicated full-page components both read the same `projects.ts` / `ventures.ts`, just render different subsets/layouts), keeping content edits separate from markup.
 
 ## Design tokens
 
@@ -99,9 +113,11 @@ Each `src/data/*.ts` file is a typed array/object transcribed directly from the 
 **Layout rhythm**
 - Hero: asymmetric split, headline+CTAs left, portrait placeholder right, faint oversized background mark/numeral.
 - Experience: vertical timeline (connecting rule + node per role), reverse chronological.
-- Projects: alternating image-left/image-right feature blocks; Opsella rendered visually larger/first as the flagship, per copy file's own "Flagship product-thinking project" note.
-- Ventures: 3-up compact card row.
-- Section backgrounds alternate `--color-bg` / `--color-bg-alt` with soft-edged dividers (not hard flat lines) to avoid the stacked-flat-sections look.
+- Home Projects preview: two larger teaser cards (Opsella first/largest as flagship, plus one more), asymmetric, with a clear "View all projects" CTA.
+- `/projects` page: alternating image-left/image-right feature blocks for all 5 projects; Opsella still rendered first/largest, per the copy file's own "Flagship product-thinking project" note.
+- Home Ventures preview: 3-up compact card row (all three ventures, nothing hidden), with a "View all ventures" CTA.
+- `/ventures` page: same three ventures, expanded to larger stacked or asymmetric blocks with more type/whitespace — same copy, more room.
+- Section backgrounds alternate `--color-bg` / `--color-bg-alt` with soft-edged dividers (not hard flat lines) to avoid the stacked-flat-sections look; applies within each page.
 
 ## Images
 
@@ -121,8 +137,9 @@ Every image slot renders via the shared `ImagePlaceholder` component:
 
 ## SEO / meta
 
-- `<title>`: "Machel Kassah — Operations Technologist & Digital Systems Builder"
-- Meta description and Open Graph tags built from the hero positioning statement, verbatim.
+- `BaseLayout.astro` accepts a `title`/`description` prop per page, defaulting to the Home values.
+- Home `<title>`: "Machel Kassah — Operations Technologist & Digital Systems Builder"; meta description and Open Graph tags built from the hero positioning statement, verbatim.
+- `/projects` and `/ventures` get their own `<title>` ("Projects — Machel Kassah", "Ventures — Machel Kassah") with a short, non-invented description derived from the section's own copy-file framing.
 - Favicon (simple mark, since no logo file exists — a minimal initial-based SVG placeholder, clearly swappable).
 
 ## Accessibility & responsiveness
