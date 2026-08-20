@@ -1,0 +1,55 @@
+---
+import { leadership } from "../data/leadership";
+import { education, certifications } from "../data/education";
+---
+
+<section id="education" class="leadership-education section section--alt">
+  <div class="container leadership-education__grid">
+    <div>
+      <h2>Leadership &amp; Community</h2>
+      <ul class="plain-list">
+        {leadership.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+    <div>
+      <h2>Education &amp; Certifications</h2>
+      <ul class="plain-list">
+        {education.map((degree) => (
+          <li><strong>{degree.credential}</strong> — {degree.institution}</li>
+        ))}
+      </ul>
+      <p class="label leadership-education__certs-label">Certifications</p>
+      <ul class="plain-list">
+        {certifications.map((cert) => <li>{cert}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .leadership-education__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-4);
+  }
+
+  .leadership-education__certs-label {
+    margin-top: var(--space-2);
+  }
+
+  .plain-list {
+    list-style: none;
+    margin: var(--space-2) 0 0;
+    padding: 0;
+  }
+
+  .plain-list li {
+    margin-bottom: var(--space-1);
+  }
+
+  @media (max-width: 800px) {
+    .leadership-education__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
