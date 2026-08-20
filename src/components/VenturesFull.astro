@@ -1,0 +1,25 @@
+---
+import { ventures } from "../data/ventures";
+---
+
+<div class="ventures-full">
+  {ventures.map((venture, index) => (
+    <article class={`venture-block ${index % 2 === 1 ? "venture-block--alt" : ""}`}>
+      <p class="label">Venture {String(index + 1).padStart(2, "0")}</p>
+      <h2>{venture.name}</h2>
+      <p class="venture-block__description">{venture.description}</p>
+    </article>
+  ))}
+</div>
+
+<style>
+  .venture-block {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .venture-block__description {
+    max-width: 48ch;
+    font-size: 1.1rem;
+  }
+</style>

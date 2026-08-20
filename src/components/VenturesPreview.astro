@@ -1,0 +1,39 @@
+---
+import { ventures } from "../data/ventures";
+---
+
+<section id="ventures" class="ventures-preview section">
+  <div class="container">
+    <h2>Ventures</h2>
+    <div class="ventures-preview__grid">
+      {ventures.map((venture) => (
+        <article class="ventures-preview__card">
+          <h3>{venture.name}</h3>
+          <p>{venture.description}</p>
+        </article>
+      ))}
+    </div>
+    <a class="btn btn--secondary" href="/ventures">View all ventures</a>
+  </div>
+</section>
+
+<style>
+  .ventures-preview__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+    margin: var(--space-3) 0 var(--space-4);
+  }
+
+  .ventures-preview__card {
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  @media (max-width: 800px) {
+    .ventures-preview__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
