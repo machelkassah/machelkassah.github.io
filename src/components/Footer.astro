@@ -1,0 +1,51 @@
+---
+import { contact } from "../data/contact";
+import { site } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="site-footer__name">{site.name}</p>
+    <ul class="site-footer__links">
+      <li><a href={`mailto:${contact.personalEmail}`}>{contact.personalEmail}</a></li>
+      <li><a href={contact.linkedin}>{contact.linkedin.replace("https://", "")}</a></li>
+      <li><a href={contact.github}>{contact.github.replace("https://", "")}</a></li>
+      <li>{contact.location}</li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-3) 0;
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-ink-muted);
+  }
+
+  .site-footer__name {
+    margin: 0;
+  }
+
+  .site-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-footer__links a {
+    color: var(--color-ink-muted);
+  }
+</style>
