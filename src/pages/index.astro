@@ -1,11 +1,27 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Experience from "../components/Experience.astro";
+import Skills from "../components/Skills.astro";
+import ProjectsPreview from "../components/ProjectsPreview.astro";
+import VenturesPreview from "../components/VenturesPreview.astro";
+import LeadershipEducation from "../components/LeadershipEducation.astro";
+import Contact from "../components/Contact.astro";
+import { site } from "../data/site";
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Machel Kassah</title>
-  </head>
-  <body>
-    <p>Coming soon</p>
-  </body>
-</html>
+
+<BaseLayout
+  title={`${site.name} — ${site.headline}`}
+  description={site.positioningStatement}
+  currentPath="/"
+>
+  <Hero />
+  <About />
+  <Experience />
+  <Skills />
+  <ProjectsPreview />
+  <VenturesPreview />
+  <LeadershipEducation />
+  <Contact />
+</BaseLayout>
