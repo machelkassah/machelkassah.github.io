@@ -1,0 +1,62 @@
+---
+import { experience } from "../data/experience";
+---
+
+<section id="experience" class="experience section section--alt">
+  <div class="container">
+    <h2>Experience</h2>
+    <ol class="timeline">
+      {experience.map((entry) => (
+        <li class="timeline__item">
+          <div class="timeline__marker" aria-hidden="true"></div>
+          <div class="timeline__content">
+            <p class="label">{entry.dates}</p>
+            <h3>{entry.role}</h3>
+            <p class="timeline__company">{entry.company}</p>
+            {entry.bullets.length > 0 && (
+              <ul class="timeline__bullets">
+                {entry.bullets.map((bullet) => <li>{bullet}</li>)}
+              </ul>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    list-style: none;
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    border-left: 2px solid var(--color-border);
+  }
+
+  .timeline__item {
+    position: relative;
+    padding: 0 0 var(--space-4) var(--space-3);
+  }
+
+  .timeline__marker {
+    position: absolute;
+    left: -7px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  .timeline__company {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    margin: 0 0 var(--space-2);
+  }
+
+  .timeline__bullets {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+</style>
