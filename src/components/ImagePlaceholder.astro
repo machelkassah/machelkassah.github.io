@@ -1,0 +1,55 @@
+---
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+
+export interface Props {
+  src: string;
+  alt: string;
+  guidance: string;
+  aspect: string;
+  class?: string;
+}
+
+const { src, alt, guidance, aspect, class: className } = Astro.props;
+
+const publicPath = fileURLToPath(new URL(`../../public${src}`, import.meta.url));
+const hasRealImage = existsSync(publicPath);
+---
+
+{hasRealImage ? (
+  <img src={src} alt={alt} class={`img-real ${className ?? ""}`} style={`aspect-ratio: ${aspect};`} loading="lazy" />
+) : (
+  <div class={`img-placeholder ${className ?? ""}`} style={`aspect-ratio: ${aspect};`} role="img" aria-label={alt}>
+    <p class="img-placeholder__guidance">{guidance}</p>
+  </div>
+)}
+
+<style>
+  .img-real {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  .img-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: var(--space-2);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius);
+    background-color: var(--color-bg-alt);
+    text-align: center;
+  }
+
+  .img-placeholder__guidance {
+    margin: 0;
+    max-width: 32ch;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    color: var(--color-ink-muted);
+  }
+</style>
