@@ -17,7 +17,13 @@ const navItems = [
 <header class="site-header">
   <div class="site-header__inner container">
     <a href="/" class="site-header__name">Machel Kassah</a>
-    <nav aria-label="Primary">
+    <input type="checkbox" id="nav-toggle" class="site-header__toggle-input" aria-hidden="true" />
+    <label for="nav-toggle" class="site-header__toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <nav aria-label="Primary" class="site-header__nav-wrap">
       <ul class="site-header__nav">
         {navItems.map((item) => (
           <li>
@@ -54,6 +60,7 @@ const navItems = [
     align-items: center;
     justify-content: space-between;
     padding: var(--space-2);
+    position: relative;
   }
 
   .site-header__name {
@@ -62,6 +69,26 @@ const navItems = [
     font-size: 1.1rem;
     color: var(--color-ink);
     text-decoration: none;
+  }
+
+  .site-header__toggle-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .site-header__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    width: 24px;
+    cursor: pointer;
+  }
+
+  .site-header__toggle span {
+    display: block;
+    height: 2px;
+    background-color: var(--color-ink);
   }
 
   .site-header__nav {
@@ -90,9 +117,28 @@ const navItems = [
   }
 
   @media (max-width: 640px) {
+    .site-header__toggle {
+      display: flex;
+    }
+
+    .site-header__nav-wrap {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-2);
+    }
+
+    .site-header__toggle-input:checked ~ .site-header__nav-wrap {
+      display: block;
+    }
+
     .site-header__nav {
+      flex-direction: column;
       gap: var(--space-2);
-      flex-wrap: wrap;
     }
   }
 </style>

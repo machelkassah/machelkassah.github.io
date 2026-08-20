@@ -21,6 +21,13 @@ describe("Header", () => {
     const result = await container.renderToString(Header, { props: { currentPath: "/projects" } });
     expect(result).toContain('aria-current="page"');
   });
+
+  it("includes a checkbox-driven mobile menu toggle that needs no client JS", async () => {
+    const container = await AstroContainer.create();
+    const result = await container.renderToString(Header, { props: {} });
+    expect(result).toContain('id="nav-toggle"');
+    expect(result).toContain('for="nav-toggle"');
+  });
 });
 
 describe("Footer", () => {
