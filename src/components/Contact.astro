@@ -1,0 +1,123 @@
+---
+import { contact } from "../data/contact";
+---
+
+<section id="contact" class="contact section">
+  <div class="container contact__grid">
+    <div class="contact__info">
+      <h2>Contact</h2>
+      <dl class="contact__list">
+        <div>
+          <dt class="label">Personal</dt>
+          <dd><a href={`mailto:${contact.personalEmail}`}>{contact.personalEmail}</a></dd>
+        </div>
+        <div>
+          <dt class="label">Business inquiries</dt>
+          <dd><a href={`mailto:${contact.businessEmail}`}>{contact.businessEmail}</a></dd>
+        </div>
+        <div>
+          <dt class="label">LinkedIn</dt>
+          <dd><a href={contact.linkedin}>{contact.linkedin.replace("https://", "")}</a></dd>
+        </div>
+        <div>
+          <dt class="label">GitHub</dt>
+          <dd><a href={contact.github}>{contact.github.replace("https://", "")}</a></dd>
+        </div>
+        <div>
+          <dt class="label">Location</dt>
+          <dd>{contact.location}</dd>
+        </div>
+      </dl>
+      <p class="contact__note">{contact.responseNote}</p>
+    </div>
+    <form class="contact__form" action={contact.formEndpoint} method="POST">
+      <!--
+        Replace `formEndpoint` in src/data/contact.ts with your real
+        Formspree endpoint (https://formspree.io/f/YOUR_FORM_ID) once the
+        form is created at formspree.io.
+      -->
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" required />
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button class="btn btn--primary" type="submit">Send message</button>
+      <p class="contact__form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  import { submitContactForm } from "../scripts/contact-form";
+
+  const form = document.querySelector<HTMLFormElement>(".contact__form");
+  const status = document.querySelector<HTMLParagraphElement>(".contact__form-status");
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!form || !status) return;
+    submitContactForm(new FormData(form), form, status, window.fetch.bind(window));
+  });
+</script>
+
+<style>
+  .contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-4);
+  }
+
+  .contact__list {
+    margin: var(--space-3) 0;
+  }
+
+  .contact__list > div {
+    margin-bottom: var(--space-2);
+  }
+
+  .contact__list dd {
+    margin: 0;
+  }
+
+  .contact__note {
+    color: var(--color-ink-muted);
+  }
+
+  .contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .contact__form input,
+  .contact__form textarea {
+    font-family: var(--font-body);
+    padding: var(--space-1);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+  }
+
+  .contact__form button {
+    margin-top: var(--space-2);
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+  }
+
+  .contact__form-status {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 800px) {
+    .contact__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
