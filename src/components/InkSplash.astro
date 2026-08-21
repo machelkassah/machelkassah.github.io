@@ -1,0 +1,43 @@
+---
+export interface Props {
+  color?: "accent" | "teal";
+  size?: string;
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+  rotate?: string;
+}
+
+const { color = "accent", size = "8rem", top, left, right, bottom, rotate = "0deg" } = Astro.props;
+
+const position = [
+  top ? `top:${top};` : "",
+  left ? `left:${left};` : "",
+  right ? `right:${right};` : "",
+  bottom ? `bottom:${bottom};` : "",
+].join(" ");
+---
+
+<svg
+  class="ink-splash"
+  style={`color: var(--color-${color}); width:${size}; height:${size}; ${position} transform: rotate(${rotate});`}
+  viewBox="0 0 200 200"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    d="M55 18c22-14 55-10 68 10 10 16 4 30 20 40 18 11 24 34 10 50-13 15-38 14-52 28-13 13-34 16-50 6-15-9-16-29-32-38-17-10-23-32-11-48 10-14 9-30 24-38 8-4 15-6 23-10z"
+  ></path>
+  <circle cx="168" cy="150" r="8"></circle>
+  <circle cx="26" cy="58" r="5"></circle>
+</svg>
+
+<style>
+  .ink-splash {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+</style>

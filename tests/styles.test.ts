@@ -36,4 +36,10 @@ describe("design tokens", () => {
     expect(css).toContain(".status-dot--progress");
     expect(css).toContain(".readout");
   });
+
+  it("defines the deep teal secondary accent and blob decoration utility", () => {
+    expect(css).toContain("--color-teal: #1C4E56");
+    expect(css).toContain("--color-teal-tint: #D7E7E6");
+    expect(css).toContain(".blob");
+  });
 });

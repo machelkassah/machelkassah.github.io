@@ -8,6 +8,8 @@
   --color-accent-tint: #F0DCCB;
   --color-signal: #2F6F4E;
   --color-signal-tint: #DCEAE1;
+  --color-teal: #1C4E56;
+  --color-teal-tint: #D7E7E6;
   --color-border: rgba(33, 29, 25, 0.12);
 
   --font-display: "Fraunces", Georgia, serif;
@@ -71,6 +73,7 @@ a {
 }
 
 .section {
+  position: relative;
   padding: var(--space-6) var(--space-2);
 }
 
@@ -78,7 +81,13 @@ a {
   background-color: var(--color-bg-alt);
 }
 
+.section--decorated {
+  overflow: hidden;
+}
+
 .container {
+  position: relative;
+  z-index: 1;
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -189,4 +198,16 @@ a {
 @keyframes status-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }
+}
+
+/* Soft atmospheric background shapes. A section using .blob needs
+   position: relative + overflow: hidden, and its content wrapped in an
+   element with position: relative so it stacks above the blob. */
+.blob {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  pointer-events: none;
 }

@@ -1,0 +1,26 @@
+---
+export interface Props {
+  color?: "accent" | "teal" | "signal";
+  size?: string;
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+}
+
+const { color = "accent", size = "26rem", top, left, right, bottom } = Astro.props;
+
+const position = [
+  top ? `top:${top};` : "",
+  left ? `left:${left};` : "",
+  right ? `right:${right};` : "",
+  bottom ? `bottom:${bottom};` : "",
+].join(" ");
+---
+
+<div
+  class="blob"
+  style={`background-color: var(--color-${color}-tint); width:${size}; height:${size}; ${position}`}
+  aria-hidden="true"
+>
+</div>
