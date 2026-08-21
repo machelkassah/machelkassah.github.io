@@ -28,6 +28,14 @@ describe("Header", () => {
     expect(result).toContain('id="nav-toggle"');
     expect(result).toContain('for="nav-toggle"');
   });
+
+  it("shows a live status readout with the current real role and location", async () => {
+    const container = await AstroContainer.create();
+    const result = await container.renderToString(Header, { props: {} });
+    expect(result).toContain("status-dot--live");
+    expect(result).toContain("Safety and Compliance Officer");
+    expect(result).toContain("Accra, Ghana");
+  });
 });
 
 describe("Footer", () => {

@@ -1,8 +1,13 @@
 ---
+import { experience } from "../data/experience";
+import { contact } from "../data/contact";
+
 export interface Props {
   currentPath?: string;
 }
 const { currentPath = "/" } = Astro.props;
+
+const currentRole = experience[0];
 
 const navItems = [
   { label: "About", href: "/#about" },
@@ -43,6 +48,10 @@ const navItems = [
         ))}
       </ul>
     </nav>
+  </div>
+  <div class="site-header__readout container">
+    <span class="status-dot status-dot--live" aria-hidden="true"></span>
+    <p class="readout">{currentRole.role} · {contact.location}</p>
   </div>
 </header>
 
@@ -116,9 +125,20 @@ const navItems = [
     color: var(--color-accent);
   }
 
+  .site-header__readout {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-2) var(--space-1);
+    margin-top: -0.35rem;
+  }
+
   @media (max-width: 640px) {
     .site-header__toggle {
       display: flex;
+    }
+
+    .site-header__readout {
+      display: none;
     }
 
     .site-header__nav-wrap {
