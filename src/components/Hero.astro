@@ -58,9 +58,15 @@ const shipped = projects.find((p) => p.status === "Live")!;
 </section>
 
 <style>
+  /* Wider than the shared .container just for this section, so the portrait
+     can grow without squeezing the name column down to an unsafe width. */
+  .container.hero__grid {
+    max-width: 80rem;
+  }
+
   .hero__grid {
     display: grid;
-    grid-template-columns: 0.75fr 1.3fr;
+    grid-template-columns: 0.6fr 1.4fr;
     gap: var(--space-5);
     align-items: center;
   }
@@ -97,14 +103,14 @@ const shipped = projects.find((p) => p.status === "Live")!;
 
   .hero__portrait-wrap {
     position: relative;
-    max-width: 42rem;
+    max-width: 52.5rem;
     margin: 0 auto;
   }
 
   .hero__portrait-wrap::before {
     content: "";
     position: absolute;
-    inset: -3.5rem;
+    inset: -4.5rem;
     z-index: -1;
     background: radial-gradient(circle at 32% 22%, var(--color-accent-tint), transparent 70%);
     border-radius: 50%;
@@ -140,13 +146,13 @@ const shipped = projects.find((p) => p.status === "Live")!;
   }
 
   .hero__badge--top {
-    top: -0.9rem;
-    left: -1.5rem;
+    top: -1.1rem;
+    left: -1.9rem;
   }
 
   .hero__badge--bottom {
-    bottom: -0.9rem;
-    right: -1.5rem;
+    bottom: -1.1rem;
+    right: -1.9rem;
   }
 
   @media (max-width: 800px) {
@@ -154,7 +160,7 @@ const shipped = projects.find((p) => p.status === "Live")!;
       grid-template-columns: 1fr;
     }
     .hero__portrait-wrap {
-      max-width: 19rem;
+      max-width: 21rem;
       margin: 0 auto var(--space-3);
       order: -1;
     }
