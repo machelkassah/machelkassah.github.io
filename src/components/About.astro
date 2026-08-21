@@ -2,9 +2,10 @@
 import { site } from "../data/site";
 import { aboutSecondaryImage } from "../data/images";
 import ImagePlaceholder from "./ImagePlaceholder.astro";
+import InkSplash from "./InkSplash.astro";
 ---
 
-<section id="about" class="about section">
+<section id="about" class="about section section--decorated">
   <div class="container about__grid">
     <div class="about__copy">
       <h2>About</h2>
@@ -12,13 +13,16 @@ import ImagePlaceholder from "./ImagePlaceholder.astro";
         <p set:html={paragraph} />
       ))}
     </div>
-    <div class="about__photo-frame">
-      <ImagePlaceholder
-        src={aboutSecondaryImage.src}
-        alt={aboutSecondaryImage.alt}
-        guidance={aboutSecondaryImage.guidance}
-        aspect={aboutSecondaryImage.aspect}
-      />
+    <div class="about__photo-wrap">
+      <InkSplash color="teal" size="7rem" top="-2rem" right="-2.5rem" rotate="-12deg" />
+      <div class="about__photo-frame">
+        <ImagePlaceholder
+          src={aboutSecondaryImage.src}
+          alt={aboutSecondaryImage.alt}
+          guidance={aboutSecondaryImage.guidance}
+          aspect={aboutSecondaryImage.aspect}
+        />
+      </div>
     </div>
   </div>
 </section>
@@ -36,9 +40,15 @@ import ImagePlaceholder from "./ImagePlaceholder.astro";
     max-width: 56ch;
   }
 
-  .about__photo-frame {
+  .about__photo-wrap {
+    position: relative;
     max-width: 20rem;
     margin-left: auto;
+  }
+
+  .about__photo-frame {
+    position: relative;
+    z-index: 1;
     overflow: hidden;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-card);
@@ -48,7 +58,7 @@ import ImagePlaceholder from "./ImagePlaceholder.astro";
     .about__grid {
       grid-template-columns: 1fr;
     }
-    .about__photo-frame {
+    .about__photo-wrap {
       max-width: 16rem;
       margin: 0 auto;
     }

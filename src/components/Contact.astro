@@ -1,8 +1,11 @@
 ---
 import { contact } from "../data/contact";
+import Blob from "./Blob.astro";
 ---
 
-<section id="contact" class="contact section">
+<section id="contact" class="contact section section--decorated">
+  <Blob color="accent" size="20rem" top="-6rem" left="-8rem" />
+  <Blob color="teal" size="18rem" bottom="-8rem" right="-6rem" />
   <div class="container contact__grid card">
     <div class="contact__info">
       <h2>Contact</h2>

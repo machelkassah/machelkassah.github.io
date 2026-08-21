@@ -1,14 +1,26 @@
 ---
 import { skills } from "../data/skills";
+import SkillIcon from "./SkillIcon.astro";
+import Blob from "./Blob.astro";
+
+const categoryIcon: Record<string, "paintbrush" | "laptop" | "wrench"> = {
+  "Digital & Creative": "paintbrush",
+  "Software Development": "laptop",
+  "Operations & Compliance": "wrench",
+};
 ---
 
-<section id="skills" class="skills section">
+<section id="skills" class="skills section section--decorated">
+  <Blob color="teal" size="22rem" bottom="-10rem" right="-8rem" />
   <div class="container">
     <h2>Skills</h2>
     <div class="skills__grid">
       {skills.map((group) => (
         <div class="skills__group card">
-          <p class="label">{group.category}</p>
+          <div class="skills__group-head">
+            <p class="label">{group.category}</p>
+            {categoryIcon[group.category] && <SkillIcon type={categoryIcon[group.category]} />}
+          </div>
           <ul class="skills__items">
             {group.items.map((item) => <li>{item}</li>)}
           </ul>
@@ -28,6 +40,20 @@ import { skills } from "../data/skills";
 
   .skills__group {
     padding: var(--space-3);
+  }
+
+  .skills__group-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .skills__group-head :global(.skill-icon) {
+    width: 1.35rem;
+    height: 1.35rem;
+    flex-shrink: 0;
+    color: var(--color-teal);
   }
 
   .skills__items {

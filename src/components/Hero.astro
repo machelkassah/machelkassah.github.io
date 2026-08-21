@@ -5,13 +5,15 @@ import { experience } from "../data/experience";
 import { contact } from "../data/contact";
 import { projects, projectStatusState } from "../data/projects";
 import ImagePlaceholder from "./ImagePlaceholder.astro";
+import Blob from "./Blob.astro";
 
 const currentRole = experience[0];
 const flagship = projects.find((p) => p.flagship)!;
 const shipped = projects.find((p) => p.status === "Live")!;
 ---
 
-<section id="home" class="hero section">
+<section id="home" class="hero section section--decorated">
+  <Blob color="teal" size="24rem" top="-8rem" left="-10rem" />
   <div class="container hero__grid">
     <div class="hero__copy">
       <div class="hero__status reveal reveal-1">
