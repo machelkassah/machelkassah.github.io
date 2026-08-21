@@ -1,0 +1,41 @@
+---
+import { site } from "../data/site";
+
+const [lead, rest] = site.positioningStatement.split(" — ");
+---
+
+<section class="pullquote">
+  <div class="container">
+    <p class="pullquote__text">
+      {lead}
+      {rest && <span class="pullquote__accent"> — {rest}</span>}
+    </p>
+  </div>
+</section>
+
+<style>
+  .pullquote {
+    background-color: var(--color-ink);
+    padding: var(--space-5) var(--space-2);
+  }
+
+  .pullquote__text {
+    max-width: 56rem;
+    margin: 0 auto;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.85rem, 2.6vw + 1.2rem, 3.4rem);
+    line-height: 1.28;
+    color: var(--color-bg);
+  }
+
+  .pullquote__accent {
+    color: var(--color-accent-tint);
+  }
+
+  @media (max-width: 640px) {
+    .pullquote {
+      padding: var(--space-4) var(--space-2);
+    }
+  }
+</style>

@@ -1,6 +1,7 @@
 :root {
   --color-bg: #F6F1E7;
   --color-bg-alt: #EFE7D8;
+  --color-surface: #FCFAF4;
   --color-ink: #211D19;
   --color-ink-muted: #5A5248;
   --color-accent: #C1531E;
@@ -15,13 +16,15 @@
 
   --space-1: 0.5rem;
   --space-2: 1rem;
-  --space-3: 1.5rem;
-  --space-4: 2.5rem;
-  --space-5: 4rem;
-  --space-6: 6rem;
+  --space-3: 1.75rem;
+  --space-4: 3rem;
+  --space-5: 5rem;
+  --space-6: 7.5rem;
 
-  --radius: 4px;
+  --radius: 10px;
+  --radius-lg: 1.5rem;
   --max-width: 72rem;
+  --shadow-card: 0 24px 48px -32px rgba(33, 29, 25, 0.4);
 }
 
 *, *::before, *::after {
@@ -37,22 +40,31 @@ body {
   background-color: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-body);
-  line-height: 1.55;
+  font-size: 1.0625rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
   font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.08;
   margin: 0 0 var(--space-2);
+  letter-spacing: -0.01em;
 }
 
-h1 { font-size: clamp(2.5rem, 5vw + 1rem, 5rem); }
-h2 { font-size: clamp(1.75rem, 2.5vw + 1rem, 2.75rem); }
-h3 { font-size: clamp(1.25rem, 1.5vw + 1rem, 1.75rem); }
+h1 { font-size: clamp(3rem, 6vw + 1rem, 6.5rem); }
+h2 { font-size: clamp(2.25rem, 3.5vw + 1rem, 3.5rem); }
+h3 { font-size: clamp(1.35rem, 1.5vw + 1rem, 1.85rem); }
 
 p { margin: 0 0 var(--space-2); }
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
 
 a {
   color: var(--color-accent);
@@ -85,15 +97,16 @@ a {
   font-size: 0.85rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius);
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
   text-decoration: none;
-  transition: transform 0.15s ease, background-color 0.15s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn--primary {
   background-color: var(--color-accent);
   color: var(--color-bg);
+  box-shadow: 0 16px 32px -18px rgba(193, 83, 30, 0.6);
 }
 
 .btn--primary:hover {

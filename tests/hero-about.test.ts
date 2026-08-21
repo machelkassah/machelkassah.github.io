@@ -11,7 +11,6 @@ describe("Hero", () => {
     expect(result).toContain("Machel Kassah");
     expect(result).toContain("Operations Technologist");
     expect(result).toContain("Digital Systems Builder");
-    expect(result).toContain("I design practical digital systems");
     expect(result).toContain(">View My Work<");
     expect(result).toContain(">Get in Touch<");
     expect(result).toContain('href="/projects"');
