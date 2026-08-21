@@ -19,6 +19,13 @@ describe("ProjectsPreview (Home)", () => {
     expect(result).not.toContain("DreamHome");
     expect(result).toContain('href="/projects"');
   });
+
+  it("shows status-dot chips reflecting Live vs percentage-complete state", async () => {
+    const container = await AstroContainer.create();
+    const result = await container.renderToString(ProjectsPreview);
+    expect(result).toContain("status-dot--live");
+    expect(result).toContain("status-dot--progress");
+  });
 });
 
 describe("ProjectsFull", () => {
@@ -43,6 +50,13 @@ describe("ProjectsFull", () => {
     expect(result).toContain("AdonisJS · MySQL · Docker · Tailwind CSS · AWS Lightsail");
     expect(result).toContain("Product design, database architecture, development, deployment");
     expect(result).toContain("My role:</strong> Developer");
+  });
+
+  it("shows status-dot chips for all 5 projects, live and in-progress both present", async () => {
+    const container = await AstroContainer.create();
+    const result = await container.renderToString(ProjectsFull);
+    expect(result).toContain("status-dot--live");
+    expect(result).toContain("status-dot--progress");
   });
 });
 

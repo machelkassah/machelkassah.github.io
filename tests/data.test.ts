@@ -3,7 +3,7 @@ import { site } from "../src/data/site";
 import { heroImage, aboutSecondaryImage } from "../src/data/images";
 import { experience } from "../src/data/experience";
 import { skills } from "../src/data/skills";
-import { projects } from "../src/data/projects";
+import { projects, projectStatusState } from "../src/data/projects";
 import { ventures } from "../src/data/ventures";
 import { leadership } from "../src/data/leadership";
 import { education, certifications } from "../src/data/education";
@@ -153,6 +153,12 @@ describe("projects data", () => {
   it("only Daily Activity Log and DreamHome CMS carry role/stack, per the copy file", () => {
     const withRole = projects.filter((p) => p.role).map((p) => p.slug).sort();
     expect(withRole).toEqual(["daily-activity-log", "dreamhome-cms"]);
+  });
+
+  it("projectStatusState maps 'Live' to live and any percentage status to progress", () => {
+    expect(projectStatusState("Live")).toBe("live");
+    expect(projectStatusState("87% complete")).toBe("progress");
+    expect(projectStatusState("70% complete")).toBe("progress");
   });
 });
 

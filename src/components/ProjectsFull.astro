@@ -1,5 +1,5 @@
 ---
-import { projects } from "../data/projects";
+import { projects, projectStatusState } from "../data/projects";
 import ImagePlaceholder from "./ImagePlaceholder.astro";
 
 const ordered = [...projects].sort((a, b) => (b.flagship ? 1 : 0) - (a.flagship ? 1 : 0));
@@ -17,7 +17,10 @@ const ordered = [...projects].sort((a, b) => (b.flagship ? 1 : 0) - (a.flagship 
         />
       </div>
       <div class="project-block__copy">
-        <p class="label">{project.status}{project.flagship ? " · Flagship" : ""}</p>
+        <p class="readout">
+          <span class={`status-dot status-dot--${projectStatusState(project.status)}`} aria-hidden="true"></span>
+          {project.status}{project.flagship ? " · Flagship" : ""}
+        </p>
         <h2>{project.name}</h2>
         <p>{project.description}</p>
         {project.problem && <p><strong>Problem:</strong> {project.problem}</p>}

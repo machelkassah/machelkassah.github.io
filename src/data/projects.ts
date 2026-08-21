@@ -4,6 +4,12 @@ export interface ProjectImage {
   guidance: string;
 }
 
+export type ProjectStatusState = "live" | "progress";
+
+export function projectStatusState(status: string): ProjectStatusState {
+  return status === "Live" ? "live" : "progress";
+}
+
 export interface Project {
   slug: string;
   name: string;
