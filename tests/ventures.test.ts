@@ -14,6 +14,13 @@ describe("VenturesPreview (Home)", () => {
     expect(result).toContain("Opsella");
     expect(result).toContain('href="/ventures"');
   });
+
+  it("lays the 3 ventures out as a ledger list, not a 3-equal-card grid", async () => {
+    const container = await AstroContainer.create();
+    const result = await container.renderToString(VenturesPreview);
+    expect(result).toContain("ventures-preview__ledger");
+    expect(result).not.toContain("ventures-preview__grid");
+  });
 });
 
 describe("VenturesFull", () => {
@@ -25,6 +32,16 @@ describe("VenturesFull", () => {
       "Software engineering and technology products, including internal business systems and Opsella."
     );
     expect(result).toContain("A POS and ERP platform for small and growing businesses.");
+  });
+
+  it("marks each row with its real initial letter, not a fake 01/02/03 sequence", async () => {
+    const container = await AstroContainer.create();
+    const result = await container.renderToString(VenturesFull);
+    expect(result).not.toContain("Venture 01");
+    expect(result).toContain("venture-row__mark");
+    expect(result).toContain(">E<");
+    expect(result).toContain(">D<");
+    expect(result).toContain(">O<");
   });
 });
 

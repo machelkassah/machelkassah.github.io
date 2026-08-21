@@ -5,9 +5,9 @@ import { ventures } from "../data/ventures";
 <section id="ventures" class="ventures-preview section">
   <div class="container">
     <h2>Ventures</h2>
-    <div class="ventures-preview__grid">
+    <div class="ventures-preview__ledger">
       {ventures.map((venture) => (
-        <article class="ventures-preview__card">
+        <article class="ventures-preview__row">
           <h3>{venture.name}</h3>
           <p>{venture.description}</p>
         </article>
@@ -18,22 +18,29 @@ import { ventures } from "../data/ventures";
 </section>
 
 <style>
-  .ventures-preview__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-3);
+  .ventures-preview__ledger {
     margin: var(--space-3) 0 var(--space-4);
+    border-top: 1px solid var(--color-border);
   }
 
-  .ventures-preview__card {
-    padding: var(--space-3);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
+  .ventures-preview__row {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: var(--space-3);
+    align-items: baseline;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border);
   }
 
-  @media (max-width: 800px) {
-    .ventures-preview__grid {
+  .ventures-preview__row p {
+    margin: 0;
+    max-width: 48ch;
+  }
+
+  @media (max-width: 640px) {
+    .ventures-preview__row {
       grid-template-columns: 1fr;
+      gap: 0.25rem;
     }
   }
 </style>
