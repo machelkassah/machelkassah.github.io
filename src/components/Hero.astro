@@ -1,15 +1,32 @@
 ---
 import { site } from "../data/site";
 import { heroImage } from "../data/images";
+import { experience } from "../data/experience";
+import { contact } from "../data/contact";
 import ImagePlaceholder from "./ImagePlaceholder.astro";
+
+const currentRole = experience[0];
 ---
 
 <section id="home" class="hero section">
   <div class="container hero__grid">
-    <div class="hero__copy reveal reveal-1">
-      <p class="label">{site.headline}</p>
+    <div class="hero__copy">
+      <div class="hero__status reveal reveal-1">
+        <span class="status-dot status-dot--live" aria-hidden="true"></span>
+        <p class="readout">{site.headline}</p>
+      </div>
       <h1 class="hero__name reveal reveal-2">{site.name}</h1>
       <p class="hero__positioning reveal reveal-3">{site.positioningStatement}</p>
+      <dl class="hero__facts reveal reveal-3">
+        <div class="hero__fact">
+          <dt class="label">Role</dt>
+          <dd>{currentRole.role}</dd>
+        </div>
+        <div class="hero__fact">
+          <dt class="label">Location</dt>
+          <dd>{contact.location}</dd>
+        </div>
+      </dl>
       <div class="hero__ctas reveal reveal-4">
         <a class="btn btn--primary" href={site.heroCtaPrimary.href}>{site.heroCtaPrimary.label}</a>
         <a class="btn btn--secondary" href={site.heroCtaSecondary.href}>{site.heroCtaSecondary.label}</a>
@@ -29,29 +46,50 @@ import ImagePlaceholder from "./ImagePlaceholder.astro";
 <style>
   .hero__grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    grid-template-columns: 1.7fr 1fr;
     gap: var(--space-5);
+    align-items: start;
+  }
+
+  .hero__status {
+    display: flex;
     align-items: center;
+    margin-bottom: var(--space-1);
   }
 
   .hero__name {
-    margin: var(--space-1) 0 var(--space-3);
+    margin: 0 0 var(--space-3);
   }
 
   .hero__positioning {
-    max-width: 42ch;
+    max-width: 46ch;
     font-size: 1.1rem;
+  }
+
+  .hero__facts {
+    display: flex;
+    gap: var(--space-4);
+    margin: var(--space-3) 0 0;
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .hero__fact dd {
+    margin: 0.15rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
   }
 
   .hero__ctas {
     display: flex;
     gap: var(--space-2);
-    margin-top: var(--space-3);
+    margin-top: var(--space-4);
   }
 
   .hero__portrait {
-    max-width: 22rem;
+    max-width: 15rem;
     margin-left: auto;
+    padding-top: var(--space-1);
   }
 
   @media (max-width: 800px) {
@@ -59,8 +97,13 @@ import ImagePlaceholder from "./ImagePlaceholder.astro";
       grid-template-columns: 1fr;
     }
     .hero__portrait {
-      margin: 0 auto;
+      max-width: 12rem;
+      margin: 0 0 var(--space-3);
       order: -1;
+    }
+    .hero__facts {
+      flex-wrap: wrap;
+      gap: var(--space-3);
     }
   }
 </style>
