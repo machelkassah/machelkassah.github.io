@@ -24,19 +24,19 @@ content.
 
 ## Swapping in real photos and screenshots
 
-Every image on the site is currently a placeholder box showing where a real
-photo or screenshot goes. To swap one in: drop the file at the exact path
-below into `public/` — it renders automatically, no code change needed.
+Remaining image slots render as a placeholder box showing where a real photo
+or screenshot goes. To fill one in: drop the file at the exact path below
+into `public/` — it renders automatically, no code change needed.
 
-| Slot | Path |
-|---|---|
-| Hero portrait | `public/images/hero-portrait.jpg` |
-| About secondary photo | `public/images/about-secondary.jpg` |
-| Daily Activity Log | `public/images/projects/daily-activity-log.jpg` |
-| Incident Reporter | `public/images/projects/incident-reporter.jpg` |
-| GearHub | `public/images/projects/gearhub.jpg` |
-| Opsella | `public/images/projects/opsella.jpg` |
-| DreamHome CMS | `public/images/projects/dreamhome-cms.jpg` |
+| Slot | Path | Status |
+|---|---|---|
+| Hero portrait | `public/images/hero-portrait.png` | Filled in |
+| About secondary photo | `public/images/about-secondary.jpg` | Placeholder |
+| Daily Activity Log | `public/images/projects/daily-activity-log.jpg` | Placeholder |
+| Incident Reporter | `public/images/projects/incident-reporter.jpg` | Placeholder |
+| GearHub | `public/images/projects/gearhub.jpg` | Placeholder |
+| Opsella | `public/images/projects/opsella.jpg` | Placeholder |
+| DreamHome CMS | `public/images/projects/dreamhome-cms.jpg` | Placeholder |
 
 Hero portrait and About photo are 4:5. All project screenshots are 16:9,
 1600×900px minimum. Scrub any real names/data per the guidance text shown in

@@ -1,6 +1,6 @@
 ---
 import { existsSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 
 export interface Props {
   src: string;
@@ -12,7 +12,10 @@ export interface Props {
 
 const { src, alt, guidance, aspect, class: className } = Astro.props;
 
-const publicPath = fileURLToPath(new URL(`../../public${src}`, import.meta.url));
+// process.cwd() (not import.meta.url) — Vite relocates this component into a
+// build chunk at a different depth during `astro build`, so an import.meta.url
+// -relative path resolves correctly in dev/tests but silently misses in prod.
+const publicPath = join(process.cwd(), "public", src);
 const hasRealImage = existsSync(publicPath);
 ---
 

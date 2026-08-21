@@ -6,11 +6,11 @@ export interface ImageSlot {
 }
 
 export const heroImage: ImageSlot = {
-  src: "/images/hero-portrait.jpg",
-  alt: "Professional headshot of Machel Kassah, front-facing, neutral background",
+  src: "/images/hero-portrait.png",
+  alt: "Portrait of Machel Kassah, high-angle studio shot, wearing glasses and a rust-brown overshirt against a dark background",
   guidance:
     "Professional headshot, front-facing, neutral or softly blurred background, good lighting. Suggested crop: square or 4:5 portrait, at least 1200px on the short side.",
-  aspect: "4/5",
+  aspect: "864/1184",
 };
 
 export const aboutSecondaryImage: ImageSlot = {

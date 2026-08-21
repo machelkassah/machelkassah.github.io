@@ -3,9 +3,12 @@ import { site } from "../data/site";
 import { heroImage } from "../data/images";
 import { experience } from "../data/experience";
 import { contact } from "../data/contact";
+import { projects, projectStatusState } from "../data/projects";
 import ImagePlaceholder from "./ImagePlaceholder.astro";
 
 const currentRole = experience[0];
+const flagship = projects.find((p) => p.flagship)!;
+const shipped = projects.find((p) => p.status === "Live")!;
 ---
 
 <section id="home" class="hero section">
@@ -32,13 +35,23 @@ const currentRole = experience[0];
         <a class="btn btn--secondary" href={site.heroCtaSecondary.href}>{site.heroCtaSecondary.label}</a>
       </div>
     </div>
-    <div class="hero__portrait reveal reveal-2">
-      <ImagePlaceholder
-        src={heroImage.src}
-        alt={heroImage.alt}
-        guidance={heroImage.guidance}
-        aspect={heroImage.aspect}
-      />
+    <div class="hero__portrait-wrap reveal reveal-2">
+      <div class="hero__portrait">
+        <ImagePlaceholder
+          src={heroImage.src}
+          alt={heroImage.alt}
+          guidance={heroImage.guidance}
+          aspect={heroImage.aspect}
+        />
+      </div>
+      <div class="hero__badge hero__badge--top">
+        <span class={`status-dot status-dot--${projectStatusState(flagship.status)}`} aria-hidden="true"></span>
+        <span>{flagship.name} · {flagship.status}</span>
+      </div>
+      <div class="hero__badge hero__badge--bottom">
+        <span class={`status-dot status-dot--${projectStatusState(shipped.status)}`} aria-hidden="true"></span>
+        <span>{shipped.name} · {shipped.status}</span>
+      </div>
     </div>
   </div>
 </section>
@@ -46,9 +59,9 @@ const currentRole = experience[0];
 <style>
   .hero__grid {
     display: grid;
-    grid-template-columns: 1.7fr 1fr;
+    grid-template-columns: 1.05fr 1fr;
     gap: var(--space-5);
-    align-items: start;
+    align-items: center;
   }
 
   .hero__status {
@@ -86,20 +99,71 @@ const currentRole = experience[0];
     margin-top: var(--space-4);
   }
 
+  .hero__portrait-wrap {
+    position: relative;
+    max-width: 22rem;
+    margin: 0 auto;
+  }
+
+  .hero__portrait-wrap::before {
+    content: "";
+    position: absolute;
+    inset: -2rem;
+    z-index: -1;
+    background: radial-gradient(circle at 32% 22%, var(--color-accent-tint), transparent 70%);
+    border-radius: 50%;
+  }
+
   .hero__portrait {
-    max-width: 15rem;
-    margin-left: auto;
-    padding-top: var(--space-1);
+    overflow: hidden;
+    border-radius: 1.5rem;
+    box-shadow: 0 30px 60px -25px rgba(33, 29, 25, 0.4);
+  }
+
+  .hero__badge {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 0.55rem 0.9rem;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    box-shadow: 0 14px 28px -14px rgba(33, 29, 25, 0.3);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .hero__badge--top {
+    top: -0.9rem;
+    left: -1.5rem;
+  }
+
+  .hero__badge--bottom {
+    bottom: -0.9rem;
+    right: -1.5rem;
   }
 
   @media (max-width: 800px) {
     .hero__grid {
       grid-template-columns: 1fr;
     }
-    .hero__portrait {
-      max-width: 12rem;
-      margin: 0 0 var(--space-3);
+    .hero__portrait-wrap {
+      max-width: 16rem;
+      margin: 0 auto var(--space-5);
       order: -1;
+    }
+    .hero__badge {
+      font-size: 0.6rem;
+      padding: 0.4rem 0.65rem;
+    }
+    .hero__badge--top {
+      left: -0.75rem;
+    }
+    .hero__badge--bottom {
+      right: -0.75rem;
     }
     .hero__facts {
       flex-wrap: wrap;

@@ -34,10 +34,9 @@ describe("site data", () => {
 });
 
 describe("site images", () => {
-  it("defines the hero portrait placeholder at 4:5 with the copy file's guidance", () => {
-    expect(heroImage.aspect).toBe("4/5");
-    expect(heroImage.src).toBe("/images/hero-portrait.jpg");
-    expect(heroImage.guidance).toContain("Professional headshot, front-facing");
+  it("defines the hero portrait at its real photo's aspect ratio and path", () => {
+    expect(heroImage.aspect).toBe("864/1184");
+    expect(heroImage.src).toBe("/images/hero-portrait.png");
   });
 
   it("defines the secondary About photo placeholder", () => {

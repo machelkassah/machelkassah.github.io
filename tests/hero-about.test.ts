@@ -18,11 +18,20 @@ describe("Hero", () => {
     expect(result).toContain('href="#contact"');
   });
 
-  it("includes the hero portrait placeholder", async () => {
+  it("renders the real hero photo, not a placeholder", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Hero);
-    expect(result).toContain("Professional headshot, front-facing");
-    expect(result).toContain("aspect-ratio: 4/5");
+    expect(result).toContain('src="/images/hero-portrait.png"');
+    expect(result).toContain("aspect-ratio: 864/1184");
+  });
+
+  it("shows floating status badges grounded in real project data next to the photo", async () => {
+    const container = await AstroContainer.create();
+    const result = await container.renderToString(Hero);
+    expect(result).toContain("hero__badge");
+    expect(result).toContain("Opsella · 87% complete");
+    expect(result).toContain("Daily Activity Log · Live");
+    expect(result).toContain("status-dot--progress");
   });
 
   it("shows a live status readout and a facts rule with the real current role and location", async () => {
