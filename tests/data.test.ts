@@ -46,10 +46,11 @@ describe("site images", () => {
 });
 
 describe("experience data", () => {
-  it("has all 5 roles in reverse chronological order", () => {
-    expect(experience).toHaveLength(5);
+  it("has all 6 roles in reverse chronological order", () => {
+    expect(experience).toHaveLength(6);
     expect(experience.map((e) => e.company)).toEqual([
-      "Ghana Link Network Services",
+      "E-Tracking, Ghana Link Network Services",
+      "E-Tracking, Ghana Link Network Services",
       "Hekimax Solutions Ltd",
       "Hekimax Solutions Ltd",
       "Hekimax Solutions Ltd",
@@ -57,13 +58,15 @@ describe("experience data", () => {
     ]);
     expect(experience.map((e) => e.role)).toEqual([
       "Safety and Compliance Officer",
+      "Field Technician",
       "Operations Lead",
       "Technical Support Manager",
       "Sales & Customer Support Technician",
       "Teaching Assistant",
     ]);
     expect(experience.map((e) => e.dates)).toEqual([
-      "2025 – Present",
+      "2026 – Present",
+      "2025 – 2026",
       "2021 – 2023",
       "2018 – 2022",
       "2014 – 2018",

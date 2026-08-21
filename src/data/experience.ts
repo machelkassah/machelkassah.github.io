@@ -7,15 +7,21 @@ export interface ExperienceEntry {
 
 export const experience: ExperienceEntry[] = [
   {
-    company: "Ghana Link Network Services",
+    company: "E-Tracking, Ghana Link Network Services",
     role: "Safety and Compliance Officer",
-    dates: "2025 – Present",
+    dates: "2026 – Present",
     bullets: [
       "Monitor compliance across operational stations and track incident and risk reporting",
       "Design and maintain internal reporting systems for management visibility",
       "Analyze operational data to identify performance and process issues",
       "Lead development of internal tools to replace manual tracking processes",
     ],
+  },
+  {
+    company: "E-Tracking, Ghana Link Network Services",
+    role: "Field Technician",
+    dates: "2025 – 2026",
+    bullets: [],
   },
   {
     company: "Hekimax Solutions Ltd",
