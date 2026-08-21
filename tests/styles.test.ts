@@ -28,4 +28,12 @@ describe("design tokens", () => {
     expect(css).toContain(".reveal-4");
     expect(css).toContain("@keyframes reveal-up");
   });
+
+  it("defines the operational signal color and status-dot readout utilities", () => {
+    expect(css).toContain("--color-signal: #2F6F4E");
+    expect(css).toContain("--color-signal-tint: #DCEAE1");
+    expect(css).toContain(".status-dot--live");
+    expect(css).toContain(".status-dot--progress");
+    expect(css).toContain(".readout");
+  });
 });
