@@ -15,8 +15,8 @@ export const heroImage: ImageSlot = {
 
 export const aboutSecondaryImage: ImageSlot = {
   src: "/images/about-secondary.jpg",
-  alt: "Candid working-context photo of Machel Kassah, at a desk, at a station, or presenting",
+  alt: "Candid photo of Machel Kassah speaking into a microphone at an event, wearing a black shirt",
   guidance:
     "A more candid, working-context shot — at a desk, at a station, or presenting — to add texture beyond the hero headshot.",
-  aspect: "4/5",
+  aspect: "736/1080",
 };

@@ -54,9 +54,10 @@ describe("About", () => {
     expect(result).toContain("drawn to problems that sit between people, process, and technology");
   });
 
-  it("includes the secondary photo placeholder", async () => {
+  it("renders the real secondary photo, not a placeholder", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(About);
-    expect(result).toContain("candid, working-context shot");
+    expect(result).toContain('src="/images/about-secondary.jpg"');
+    expect(result).toContain("aspect-ratio: 736/1080");
   });
 });

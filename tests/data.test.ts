@@ -39,10 +39,9 @@ describe("site images", () => {
     expect(heroImage.src).toBe("/images/hero-portrait.png");
   });
 
-  it("defines the secondary About photo placeholder", () => {
-    expect(aboutSecondaryImage.aspect).toBe("4/5");
+  it("defines the secondary About photo at its real photo's aspect ratio and path", () => {
+    expect(aboutSecondaryImage.aspect).toBe("736/1080");
     expect(aboutSecondaryImage.src).toBe("/images/about-secondary.jpg");
-    expect(aboutSecondaryImage.guidance).toContain("candid, working-context shot");
   });
 });
 
