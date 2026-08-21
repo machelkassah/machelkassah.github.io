@@ -4,13 +4,16 @@ import { readFileSync } from "node:fs";
 const css = readFileSync(new URL("../src/styles/global.css", import.meta.url), "utf-8");
 
 describe("design tokens", () => {
-  it("defines the spec color palette", () => {
-    expect(css).toContain("--color-bg: #F6F1E7");
-    expect(css).toContain("--color-bg-alt: #EFE7D8");
-    expect(css).toContain("--color-ink: #211D19");
-    expect(css).toContain("--color-ink-muted: #5A5248");
-    expect(css).toContain("--color-accent: #C1531E");
-    expect(css).toContain("--color-accent-tint: #F0DCCB");
+  it("defines the deep teal dominant color palette with warm ivory text", () => {
+    expect(css).toContain("--color-bg: #0C2A2C");
+    expect(css).toContain("--color-bg-alt: #123539");
+    expect(css).toContain("--color-surface: #17403F");
+    expect(css).toContain("--color-ink: #F5F0E4");
+    expect(css).toContain("--color-ink-muted: #9DC2BE");
+  });
+
+  it("defines the warm amber accent for CTAs and highlights", () => {
+    expect(css).toContain("--color-accent: #E2884A");
   });
 
   it("defines the spec font stack variables", () => {
@@ -29,17 +32,15 @@ describe("design tokens", () => {
     expect(css).toContain("@keyframes reveal-up");
   });
 
-  it("defines the operational signal color and status-dot readout utilities", () => {
-    expect(css).toContain("--color-signal: #2F6F4E");
-    expect(css).toContain("--color-signal-tint: #DCEAE1");
+  it("defines the operational signal color (bright mint, legible on dark) and status-dot readout utilities", () => {
+    expect(css).toContain("--color-signal: #5FCE9A");
     expect(css).toContain(".status-dot--live");
     expect(css).toContain(".status-dot--progress");
     expect(css).toContain(".readout");
   });
 
-  it("defines the deep teal secondary accent and blob decoration utility", () => {
-    expect(css).toContain("--color-teal: #1C4E56");
-    expect(css).toContain("--color-teal-tint: #D7E7E6");
+  it("defines a bright decorative teal (distinct from the dark teal background) and the blob utility", () => {
+    expect(css).toContain("--color-teal: #6FD8C9");
     expect(css).toContain(".blob");
   });
 });
