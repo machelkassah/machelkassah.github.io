@@ -8,9 +8,8 @@ import { experience } from "../data/experience";
     <ol class="timeline">
       {experience.map((entry) => (
         <li class="timeline__item">
-          <div class="timeline__marker" aria-hidden="true"></div>
+          <p class="timeline__stamp">[{entry.dates}]</p>
           <div class="timeline__content">
-            <p class="label">{entry.dates}</p>
             <h3>{entry.role}</h3>
             <p class="timeline__company">{entry.company}</p>
             {entry.bullets.length > 0 && (
@@ -30,22 +29,26 @@ import { experience } from "../data/experience";
     list-style: none;
     margin: var(--space-3) 0 0;
     padding: 0;
-    border-left: 2px solid var(--color-border);
   }
 
   .timeline__item {
-    position: relative;
-    padding: 0 0 var(--space-4) var(--space-3);
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--color-border);
   }
 
-  .timeline__marker {
-    position: absolute;
-    left: -7px;
-    top: 4px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: var(--color-accent);
+  .timeline__item:first-child {
+    border-top: none;
+  }
+
+  .timeline__stamp {
+    margin: 0.2rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: var(--color-accent);
   }
 
   .timeline__company {
@@ -58,5 +61,12 @@ import { experience } from "../data/experience";
   .timeline__bullets {
     margin: 0;
     padding-left: 1.1rem;
+  }
+
+  @media (max-width: 640px) {
+    .timeline__item {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
   }
 </style>

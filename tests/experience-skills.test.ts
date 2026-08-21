@@ -20,6 +20,13 @@ describe("Experience", () => {
     const result = await container.renderToString(Experience);
     expect(result).toContain("Monitor compliance across operational stations and track incident and risk reporting");
   });
+
+  it("renders each role's dates as a bracketed log stamp", async () => {
+    const container = await AstroContainer.create();
+    const result = await container.renderToString(Experience);
+    expect(result).toContain("[2025 – Present]");
+    expect(result).toContain("[2012 – 2014]");
+  });
 });
 
 describe("Skills", () => {
