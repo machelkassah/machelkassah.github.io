@@ -4,7 +4,7 @@ import { ventures } from "../data/ventures";
 
 <div class="ventures-full">
   {ventures.map((venture) => (
-    <article class="venture-row">
+    <article class="venture-row card">
       <span class="venture-row__mark" aria-hidden="true">{venture.name.charAt(0)}</span>
       <div class="venture-row__body">
         <h2>{venture.name}</h2>
@@ -15,20 +15,27 @@ import { ventures } from "../data/ventures";
 </div>
 
 <style>
+  .ventures-full {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
   .venture-row {
     display: grid;
     grid-template-columns: 5rem 1fr;
     gap: var(--space-4);
     align-items: start;
-    padding: var(--space-4) 0;
-    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-4);
   }
 
   .venture-row__mark {
     font-family: var(--font-display);
     font-size: 3rem;
     line-height: 1;
-    color: var(--color-accent-tint);
+    color: var(--color-accent);
+    opacity: 0.4;
   }
 
   .venture-row__description {

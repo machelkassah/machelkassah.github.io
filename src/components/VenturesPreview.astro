@@ -7,7 +7,7 @@ import { ventures } from "../data/ventures";
     <h2>Ventures</h2>
     <div class="ventures-preview__ledger">
       {ventures.map((venture) => (
-        <article class="ventures-preview__row">
+        <article class="ventures-preview__row card">
           <h3>{venture.name}</h3>
           <p>{venture.description}</p>
         </article>
@@ -19,8 +19,10 @@ import { ventures } from "../data/ventures";
 
 <style>
   .ventures-preview__ledger {
-    margin: var(--space-3) 0 var(--space-4);
-    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: var(--space-4) 0 var(--space-4);
   }
 
   .ventures-preview__row {
@@ -28,8 +30,7 @@ import { ventures } from "../data/ventures";
     grid-template-columns: 12rem 1fr;
     gap: var(--space-3);
     align-items: baseline;
-    padding: var(--space-2) 0;
-    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-3);
   }
 
   .ventures-preview__row p {

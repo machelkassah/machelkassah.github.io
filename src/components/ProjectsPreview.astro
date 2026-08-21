@@ -12,19 +12,23 @@ const featured = [...projects]
     <h2>Projects</h2>
     <div class="projects-preview__grid">
       {featured.map((project) => (
-        <article class={`projects-preview__card ${project.flagship ? "projects-preview__card--flagship" : ""}`}>
-          <ImagePlaceholder
-            src={project.image.src}
-            alt={project.image.alt}
-            guidance={project.image.guidance}
-            aspect="16/9"
-          />
-          <p class="readout">
-            <span class={`status-dot status-dot--${projectStatusState(project.status)}`} aria-hidden="true"></span>
-            {project.status}{project.flagship ? " · Flagship" : ""}
-          </p>
-          <h3>{project.name}</h3>
-          <p>{project.description}</p>
+        <article class={`projects-preview__card card ${project.flagship ? "projects-preview__card--flagship" : ""}`}>
+          <div class="projects-preview__media">
+            <ImagePlaceholder
+              src={project.image.src}
+              alt={project.image.alt}
+              guidance={project.image.guidance}
+              aspect="16/9"
+            />
+          </div>
+          <div class="projects-preview__body">
+            <p class="readout">
+              <span class={`status-dot status-dot--${projectStatusState(project.status)}`} aria-hidden="true"></span>
+              {project.status}{project.flagship ? " · Flagship" : ""}
+            </p>
+            <h3>{project.name}</h3>
+            <p>{project.description}</p>
+          </div>
         </article>
       ))}
     </div>
@@ -36,9 +40,21 @@ const featured = [...projects]
   .projects-preview__grid {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
-    gap: var(--space-4);
-    margin: var(--space-3) 0 var(--space-4);
+    gap: var(--space-3);
+    margin: var(--space-4) 0 var(--space-4);
     align-items: start;
+  }
+
+  .projects-preview__card {
+    overflow: hidden;
+  }
+
+  .projects-preview__body {
+    padding: var(--space-3);
+  }
+
+  .projects-preview__body p:last-child {
+    margin-bottom: 0;
   }
 
   .projects-preview__card--flagship h3 {

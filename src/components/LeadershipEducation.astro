@@ -5,13 +5,13 @@ import { education, certifications } from "../data/education";
 
 <section id="education" class="leadership-education section section--alt">
   <div class="container leadership-education__grid">
-    <div>
+    <div class="card leadership-education__panel">
       <h2>Leadership &amp; Community</h2>
       <ul class="plain-list">
         {leadership.map((item) => <li>{item}</li>)}
       </ul>
     </div>
-    <div>
+    <div class="card leadership-education__panel">
       <h2>Education &amp; Certifications</h2>
       <ul class="plain-list">
         {education.map((degree) => (
@@ -30,7 +30,12 @@ import { education, certifications } from "../data/education";
   .leadership-education__grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    gap: var(--space-4);
+    gap: var(--space-3);
+    align-items: start;
+  }
+
+  .leadership-education__panel {
+    padding: var(--space-4);
   }
 
   .leadership-education__certs-label {

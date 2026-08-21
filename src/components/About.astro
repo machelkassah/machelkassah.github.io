@@ -12,7 +12,7 @@ import ImagePlaceholder from "./ImagePlaceholder.astro";
         <p set:html={paragraph} />
       ))}
     </div>
-    <div class="about__photo">
+    <div class="about__photo-frame">
       <ImagePlaceholder
         src={aboutSecondaryImage.src}
         alt={aboutSecondaryImage.alt}
@@ -26,20 +26,29 @@ import ImagePlaceholder from "./ImagePlaceholder.astro";
 <style>
   .about__grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
+    grid-template-columns: 1.3fr 1fr;
     gap: var(--space-5);
     align-items: start;
   }
 
-  .about__photo {
+  .about__copy p {
+    font-size: 1.1rem;
+    max-width: 56ch;
+  }
+
+  .about__photo-frame {
     max-width: 20rem;
+    margin-left: auto;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
   }
 
   @media (max-width: 800px) {
     .about__grid {
       grid-template-columns: 1fr;
     }
-    .about__photo {
+    .about__photo-frame {
       max-width: 16rem;
       margin: 0 auto;
     }

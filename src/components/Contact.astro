@@ -3,7 +3,7 @@ import { contact } from "../data/contact";
 ---
 
 <section id="contact" class="contact section">
-  <div class="container contact__grid">
+  <div class="container contact__grid card">
     <div class="contact__info">
       <h2>Contact</h2>
       <dl class="contact__list">
@@ -69,6 +69,7 @@ import { contact } from "../data/contact";
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: var(--space-4);
+    padding: var(--space-5);
   }
 
   .contact__list {

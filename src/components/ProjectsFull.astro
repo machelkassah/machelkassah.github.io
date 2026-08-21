@@ -7,7 +7,7 @@ const ordered = [...projects].sort((a, b) => (b.flagship ? 1 : 0) - (a.flagship 
 
 <div class="projects-full">
   {ordered.map((project, index) => (
-    <article class={`project-block ${index % 2 === 1 ? "project-block--reverse" : ""}`}>
+    <article class={`project-block card ${index % 2 === 1 ? "project-block--reverse" : ""}`}>
       <div class="project-block__media">
         <ImagePlaceholder
           src={project.image.src}
@@ -33,13 +33,19 @@ const ordered = [...projects].sort((a, b) => (b.flagship ? 1 : 0) - (a.flagship 
 </div>
 
 <style>
+  .projects-full {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
   .project-block {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: var(--space-4);
     align-items: center;
-    padding: var(--space-4) 0;
-    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-3);
   }
 
   .project-block--reverse {

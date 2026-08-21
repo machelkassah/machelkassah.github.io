@@ -7,7 +7,7 @@ import { skills } from "../data/skills";
     <h2>Skills</h2>
     <div class="skills__grid">
       {skills.map((group) => (
-        <div class="skills__group">
+        <div class="skills__group card">
           <p class="label">{group.category}</p>
           <ul class="skills__items">
             {group.items.map((item) => <li>{item}</li>)}
@@ -22,8 +22,12 @@ import { skills } from "../data/skills";
   .skills__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-    gap: var(--space-4);
-    margin-top: var(--space-3);
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  .skills__group {
+    padding: var(--space-3);
   }
 
   .skills__items {
