@@ -60,7 +60,7 @@ const shipped = projects.find((p) => p.status === "Live")!;
 <style>
   .hero__grid {
     display: grid;
-    grid-template-columns: 1.05fr 1fr;
+    grid-template-columns: 0.9fr 1.15fr;
     gap: var(--space-5);
     align-items: center;
   }
@@ -97,23 +97,30 @@ const shipped = projects.find((p) => p.status === "Live")!;
 
   .hero__portrait-wrap {
     position: relative;
-    max-width: 27rem;
+    max-width: 36rem;
     margin: 0 auto;
   }
 
   .hero__portrait-wrap::before {
     content: "";
     position: absolute;
-    inset: -2rem;
+    inset: -3rem;
     z-index: -1;
     background: radial-gradient(circle at 32% 22%, var(--color-accent-tint), transparent 70%);
     border-radius: 50%;
   }
 
-  .hero__portrait {
-    overflow: hidden;
-    border-radius: 1.5rem;
-    box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.6);
+  /* The glow above is the "oval behind the image" - the image itself is
+     masked into a soft, feathered oval (not a hard-cornered card) so it
+     blends into that glow rather than sitting on top of it with a crisp edge. */
+  .hero__portrait :global(.img-real),
+  .hero__portrait :global(.img-placeholder) {
+    -webkit-mask-image: radial-gradient(ellipse 62% 58% at 50% 48%, black 55%, transparent 100%);
+    mask-image: radial-gradient(ellipse 62% 58% at 50% 48%, black 55%, transparent 100%);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
   }
 
   .hero__badge {

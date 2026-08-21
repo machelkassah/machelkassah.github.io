@@ -64,7 +64,7 @@ describe("experience data", () => {
     ]);
     expect(experience.map((e) => e.dates)).toEqual([
       "2025 – Present",
-      "2022 – 2025",
+      "2021 – 2023",
       "2018 – 2022",
       "2014 – 2018",
       "2012 – 2014",

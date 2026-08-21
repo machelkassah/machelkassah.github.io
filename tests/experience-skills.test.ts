@@ -45,10 +45,10 @@ describe("Skills", () => {
     expect(result).toContain("Web server &amp; domain configuration");
   });
 
-  it("gives Digital & Creative, Software Development, and Operations & Compliance a distinct skill icon", async () => {
+  it("gives every one of the 5 skill categories a distinct icon", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Skills);
     const iconCount = (result.match(/class="skill-icon"/g) ?? []).length;
-    expect(iconCount).toBe(3);
+    expect(iconCount).toBe(5);
   });
 });

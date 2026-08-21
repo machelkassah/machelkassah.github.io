@@ -20,7 +20,7 @@ export const experience: ExperienceEntry[] = [
   {
     company: "Hekimax Solutions Ltd",
     role: "Operations Lead",
-    dates: "2022 – 2025",
+    dates: "2021 – 2023",
     bullets: [
       "Led operational and strategic initiatives across the organization",
       "Oversaw the launch of the Yesoko website and mobile applications",

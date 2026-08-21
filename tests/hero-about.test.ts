@@ -1,7 +1,10 @@
 import { describe, it, expect } from "vitest";
+import { readFileSync } from "node:fs";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import Hero from "../src/components/Hero.astro";
 import About from "../src/components/About.astro";
+
+const heroSource = readFileSync(new URL("../src/components/Hero.astro", import.meta.url), "utf-8");
 
 describe("Hero", () => {
   it("renders name, headline, positioning statement, and both CTAs", async () => {
@@ -31,6 +34,11 @@ describe("Hero", () => {
     expect(result).toContain("Opsella · 87% complete");
     expect(result).toContain("Daily Activity Log · Live");
     expect(result).toContain("status-dot--progress");
+  });
+
+  it("masks the portrait into a feathered oval instead of a hard-cornered card", () => {
+    expect(heroSource).toContain("mask-image");
+    expect(heroSource).not.toContain("border-radius: 1.5rem");
   });
 
   it("shows a live status readout and a facts rule with the real current role and location", async () => {

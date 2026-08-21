@@ -37,15 +37,15 @@ describe("InkSplash", () => {
 });
 
 describe("SkillIcon", () => {
-  it("renders a distinct line icon per type", async () => {
+  it("renders a distinct line icon per type, including the full 5-category set", async () => {
     const container = await AstroContainer.create();
-    const paintbrush = await container.renderToString(SkillIcon, { props: { type: "paintbrush" } });
-    const laptop = await container.renderToString(SkillIcon, { props: { type: "laptop" } });
-    const wrench = await container.renderToString(SkillIcon, { props: { type: "wrench" } });
-    expect(paintbrush).toContain("<svg");
-    expect(laptop).toContain("<svg");
-    expect(wrench).toContain("<svg");
-    expect(paintbrush).not.toBe(laptop);
-    expect(laptop).not.toBe(wrench);
+    const types = ["paintbrush", "laptop", "wrench", "server", "briefcase"] as const;
+    const rendered = await Promise.all(
+      types.map((type) => container.renderToString(SkillIcon, { props: { type } }))
+    );
+    for (const svg of rendered) {
+      expect(svg).toContain("<svg");
+    }
+    expect(new Set(rendered).size).toBe(types.length);
   });
 });
