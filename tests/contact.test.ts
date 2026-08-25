@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import Contact from "../src/components/Contact.astro";
+import { contact } from "../src/data/contact";
 
 describe("Contact", () => {
   it("has id=contact and labels the personal and business emails separately", async () => {
@@ -24,7 +25,7 @@ describe("Contact", () => {
     expect(result).toContain('name="message"');
     expect(result).toContain('action="https://api.web3forms.com/submit"');
     expect(result).toContain('name="access_key"');
-    expect(result).toContain('value="YOUR_WEB3FORMS_ACCESS_KEY"');
+    expect(result).toContain(`value="${contact.web3formsAccessKey}"`);
   });
 
   it("has no phone input field", async () => {

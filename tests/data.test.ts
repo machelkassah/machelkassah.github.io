@@ -207,8 +207,9 @@ describe("contact data", () => {
     expect(contact).not.toHaveProperty("phone");
   });
 
-  it("has the Web3Forms endpoint and a placeholder access key clearly marked for replacement", () => {
+  it("has the Web3Forms endpoint and a real (non-placeholder) access key", () => {
     expect(contact.formEndpoint).toBe("https://api.web3forms.com/submit");
-    expect(contact.web3formsAccessKey).toBe("YOUR_WEB3FORMS_ACCESS_KEY");
+    expect(contact.web3formsAccessKey).toBeTruthy();
+    expect(contact.web3formsAccessKey).not.toBe("YOUR_WEB3FORMS_ACCESS_KEY");
   });
 });

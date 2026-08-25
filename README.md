@@ -44,12 +44,10 @@ each placeholder before uploading.
 
 ## Contact form
 
-The form posts to Web3Forms with a placeholder access key. To go live:
-1. Get a real access key at [web3forms.com](https://web3forms.com) — just
-   enter your email, no account needed.
-2. Replace `web3formsAccessKey` in `src/data/contact.ts` with it.
-
-Submissions email whatever address you used to get the access key.
+Wired to Web3Forms with a real access key (`src/data/contact.ts`).
+Submissions email whatever address was used to get that key. To rotate
+the key, get a new one at [web3forms.com](https://web3forms.com) and
+replace `web3formsAccessKey`.
 
 ## Deploying
 
