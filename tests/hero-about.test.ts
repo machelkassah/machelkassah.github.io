@@ -12,8 +12,8 @@ describe("Hero", () => {
     const result = await container.renderToString(Hero);
     expect(result).toContain('id="home"');
     expect(result).toContain("Machel Kassah");
-    expect(result).toContain("Operations and Compliance Professional");
-    expect(result).toContain("real operational problems");
+    expect(result).toContain("Operations Technologist");
+    expect(result).toContain("Digital Systems Builder");
     expect(result).toContain(">View My Work<");
     expect(result).toContain(">Get in Touch<");
     expect(result).toContain('href="/projects"');
