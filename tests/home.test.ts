@@ -19,7 +19,9 @@ describe("Home page", () => {
   it("sets the composed home title and positioning-statement description", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(HomePage);
-    expect(result).toContain("<title>Machel Kassah — Operations Technologist &amp; Digital Systems Builder</title>");
+    expect(result).toContain(
+      "<title>Machel Kassah — Operations and Compliance Professional building software solutions for real operational problems</title>"
+    );
     expect(result).toContain('content="I design practical digital systems');
   });
 

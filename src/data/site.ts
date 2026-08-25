@@ -5,7 +5,7 @@ export interface CtaLink {
 
 export const site = {
   name: "Machel Kassah",
-  headline: "Operations Technologist & Digital Systems Builder",
+  headline: "Operations and Compliance Professional building software solutions for real operational problems",
   positioningStatement:
     "I design practical digital systems, strengthen operational processes, and turn real business problems into working technology — spanning compliance, software development, and data.",
   heroCtaPrimary: { label: "View My Work", href: "/projects" } as CtaLink,

@@ -1,6 +1,6 @@
 # Machel Kassah — Personal Website
 
-Operations Technologist & Digital Systems Builder — Accra, Ghana.
+Operations and Compliance Professional building software solutions for real operational problems — Accra, Ghana.
 
 Built with [Astro](https://astro.build) as a static site (no backend). Hybrid
 structure: `/` is a single scrolling home page; `/projects` and `/ventures`

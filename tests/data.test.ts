@@ -12,7 +12,9 @@ import { contact } from "../src/data/contact";
 describe("site data", () => {
   it("matches the copy file's name, headline, and positioning statement", () => {
     expect(site.name).toBe("Machel Kassah");
-    expect(site.headline).toBe("Operations Technologist & Digital Systems Builder");
+    expect(site.headline).toBe(
+      "Operations and Compliance Professional building software solutions for real operational problems"
+    );
     expect(site.positioningStatement).toBe(
       "I design practical digital systems, strengthen operational processes, and turn real business problems into working technology — spanning compliance, software development, and data."
     );
