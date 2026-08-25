@@ -207,7 +207,8 @@ describe("contact data", () => {
     expect(contact).not.toHaveProperty("phone");
   });
 
-  it("has a placeholder Formspree endpoint clearly marked for replacement", () => {
-    expect(contact.formEndpoint).toBe("https://formspree.io/f/YOUR_FORM_ID");
+  it("has the Web3Forms endpoint and a placeholder access key clearly marked for replacement", () => {
+    expect(contact.formEndpoint).toBe("https://api.web3forms.com/submit");
+    expect(contact.web3formsAccessKey).toBe("YOUR_WEB3FORMS_ACCESS_KEY");
   });
 });

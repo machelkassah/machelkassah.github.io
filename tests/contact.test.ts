@@ -16,13 +16,15 @@ describe("Contact", () => {
     expect(result).toContain("Accra, Ghana");
   });
 
-  it("has Name/Email/Message fields posting to the Formspree placeholder endpoint", async () => {
+  it("has Name/Email/Message fields posting to the Web3Forms endpoint with an access key", async () => {
     const container = await AstroContainer.create();
     const result = await container.renderToString(Contact);
     expect(result).toContain('name="name"');
     expect(result).toContain('name="email"');
     expect(result).toContain('name="message"');
-    expect(result).toContain('action="https://formspree.io/f/YOUR_FORM_ID"');
+    expect(result).toContain('action="https://api.web3forms.com/submit"');
+    expect(result).toContain('name="access_key"');
+    expect(result).toContain('value="YOUR_WEB3FORMS_ACCESS_KEY"');
   });
 
   it("has no phone input field", async () => {

@@ -6,6 +6,8 @@ export const contact = {
   location: "Accra, Ghana",
   responseNote:
     "Prefer to reach out directly? Use the form below or email — I typically respond within 1–2 business days.",
-  // Replace YOUR_FORM_ID with the real Formspree form ID before launch.
-  formEndpoint: "https://formspree.io/f/YOUR_FORM_ID",
+  formEndpoint: "https://api.web3forms.com/submit",
+  // Get a real access key at web3forms.com (just enter your email, no
+  // account needed) and replace this before launch.
+  web3formsAccessKey: "YOUR_WEB3FORMS_ACCESS_KEY",
 };

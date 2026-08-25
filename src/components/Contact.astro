@@ -35,10 +35,11 @@ import Blob from "./Blob.astro";
     </div>
     <form class="contact__form" action={contact.formEndpoint} method="POST">
       <!--
-        Replace `formEndpoint` in src/data/contact.ts with your real
-        Formspree endpoint (https://formspree.io/f/YOUR_FORM_ID) once the
-        form is created at formspree.io.
+        Replace `web3formsAccessKey` in src/data/contact.ts with your real
+        access key from web3forms.com once you've created one.
       -->
+      <input type="hidden" name="access_key" value={contact.web3formsAccessKey} />
+      <input type="hidden" name="subject" value="New message from machelkassah.github.io" />
       <label for="name">Name</label>
       <input id="name" name="name" type="text" required />
 

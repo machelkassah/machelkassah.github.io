@@ -44,10 +44,12 @@ each placeholder before uploading.
 
 ## Contact form
 
-The form posts to a placeholder Formspree endpoint. To go live:
-1. Create a form at [formspree.io](https://formspree.io).
-2. Replace `formEndpoint` in `src/data/contact.ts` with your real endpoint
-   (`https://formspree.io/f/YOUR_FORM_ID`).
+The form posts to Web3Forms with a placeholder access key. To go live:
+1. Get a real access key at [web3forms.com](https://web3forms.com) — just
+   enter your email, no account needed.
+2. Replace `web3formsAccessKey` in `src/data/contact.ts` with it.
+
+Submissions email whatever address you used to get the access key.
 
 ## Deploying
 

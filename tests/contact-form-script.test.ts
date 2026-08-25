@@ -6,7 +6,7 @@ function makeStatus() {
 }
 
 function makeForm() {
-  return { action: "https://formspree.io/f/YOUR_FORM_ID", reset: vi.fn() };
+  return { action: "https://api.web3forms.com/submit", reset: vi.fn() };
 }
 
 describe("submitContactForm", () => {
